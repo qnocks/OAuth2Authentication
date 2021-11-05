@@ -1,0 +1,17 @@
+
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 881288149987-g1lumtf2m7dlfdn0flr95oh1b9m7fv3c.apps.googleusercontent.com
+            client-secret: ${googleSecret}
+          github:
+            client-id: 029107ce74923b9adef7
+            client-secret: ${githubSecret}
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}

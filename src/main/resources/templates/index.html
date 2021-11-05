@@ -1,0 +1,68 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>OAuth project</title>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/main.css">
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="/js/index.js"></script>
+</head>
+<body>
+    <div class="text-center">
+        <h1>OAuth 2.0 Message Dispatch</h1>
+        <div class="container" sec:authorize="isAnonymous()">
+            <h2>Please authenticate</h2>
+            <div>
+                With: <a href="/oauth2/authorization/github">GitHub</a>
+            </div>
+            <div>
+                With: <a href="/oauth2/authorization/google">Google</a>
+            </div>
+        </div>
+        <div class="container authenticated" sec:authorize="isAuthenticated()">
+            <div>
+                Logged in as: <span th:text="${name}"></span>
+            </div>
+            <div>
+                <form action="/logout" method="post">
+                    <input type="submit" class="btn btn-primary" value="Logout">
+                </form>
+            </div>
+        </div>
+        <hr>
+        <div class="container authenticated" sec:authorize="isAnonymous()">
+            <div>
+                <div>Bro: <span th:text="${broCount}"></span></div>
+                <div>Sis: <span th:text="${sisCount}"></span></div>
+            </div>
+        </div>
+        <div class="container authenticated" sec:authorize="isAuthenticated()">
+
+            <div class="row">
+                <a href="/success">
+                    <div id="wsMessageText" th:text="${message?.text}" class="message-text"></div>
+                </a>
+                <div id="wsMessageInfo" th:text="${message?.info}" class="message-info"></div>
+            </div>
+
+            <div class="row btn-block">
+                <form th:action="@{/messages/{text}(text=${'Bro!'})}" method="post">
+                    <input type="submit" class="btn btn-primary btn-lg" value="Bro!" />
+                </form>
+                <form th:action="@{/messages/{text}(text=${'Sis!'})}" method="post">
+                    <input type="submit" class="btn btn-primary btn-lg" value="Sis!" />
+                </form>
+                <button id="sendBro" class="btn btn-primary" type="button">Bro! WS</button>
+                <button id="sendSis" class="btn btn-primary" type="button">Sis! WS</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
