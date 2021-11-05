@@ -77,7 +77,7 @@ public class MessagesControllerTest {
         underTest.getMessage(expected);
 
         // then
-        var captor = ArgumentCaptor.forClass(Message.class);
+        ArgumentCaptor<Message> captor = ArgumentCaptor.forClass(Message.class);
         verify(messagesRepository).save(captor.capture());
 
         Message actual = captor.getValue();
