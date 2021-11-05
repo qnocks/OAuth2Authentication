@@ -1,5 +1,3 @@
-
-
 spring:
   security:
     oauth2:
@@ -12,6 +10,6 @@ spring:
             client-id: 029107ce74923b9adef7
             client-secret: ${githubSecret}
   datasource:
-    url: ${SPRING_DATASOURCE_URL}
-    username: ${SPRING_DATASOURCE_USERNAME}
-    password: ${SPRING_DATASOURCE_PASSWORD}
+    url: ${SPRING_DATASOURCE_URL:jdbc:h2:mem:testdb}
+    username: ${SPRING_DATASOURCE_USERNAME:sa}
+    password: ${SPRING_DATASOURCE_PASSWORD:password}
