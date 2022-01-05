@@ -13,7 +13,6 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>OAuth2Authentication</name>
     <description>OAuth 2.0 project based on Spring Boot</description>
-    <properties></properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -60,7 +59,7 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <scope>test</scope>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>

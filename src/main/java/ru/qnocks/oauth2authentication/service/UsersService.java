@@ -20,7 +20,7 @@ public class UsersService {
     public User save(UserInfo userInfo) {
         Optional<User> userOptional = usersRepository.findByEmail(userInfo.getEmail());
 
-        if (userOptional.isEmpty()) {
+        if (!userOptional.isPresent()) {
             User user = new User();
 
             user.setId(userInfo.getId());
