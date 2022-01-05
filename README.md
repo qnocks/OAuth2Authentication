@@ -1,5 +1,7 @@
 # OAuth Authentication example
 
+[![Build Status](https://travis-ci.org/spring/spring.svg?branch=develop)](https://travis-ci.org/spring/spring)
+
 ## About
 
 На любой из "наших" платформ на выбор (.NET/C#/Core/ASP.NET, Java/Spring, PHP/Symfony (опционально), 
